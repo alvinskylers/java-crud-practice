@@ -25,4 +25,16 @@ public enum Department {
         }
     }
 
+    public static int getCodeByDept(String dept) {
+        switch (dept.toUpperCase()) {
+            case "SALES" : return 0;
+            case "MARKETING": return 1;
+            case "FINANCE": return 2;
+            case "OPERATIONS": return 3;
+            case "HUMAN_RESOURCE": return 4;
+            case "INFORMATION_TECHNOLOGY": return 5;
+            default: return -1;
+        }
+    }
+
 }
