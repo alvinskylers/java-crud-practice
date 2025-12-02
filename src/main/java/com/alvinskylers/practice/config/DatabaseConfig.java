@@ -8,7 +8,7 @@ public class DatabaseConfig {
 
     static{
         try (InputStream config = DatabaseConfig.class.getClassLoader().getResourceAsStream("config.properties")) {
-            if (config != null) {
+            if (config == null) {
                 System.out.println("config.properties file not found...");
                 System.exit(1);
             }

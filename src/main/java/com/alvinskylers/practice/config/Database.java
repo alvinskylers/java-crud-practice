@@ -19,7 +19,7 @@ public class Database {
 
     public static void createTableEmployee() {
         String query = "CREATE TABLE employees (" +
-                        "   id SERIAL PRIMARY_KEY, " +
+                        "   id SERIAL PRIMARY KEY, " +
                         "   name VARCHAR(100) NOT NULL," +
                         "   department VARCHAR(50) NOT NULL," +
                         "   salary DECIMAL NOT NULL " +
