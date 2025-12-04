@@ -14,7 +14,7 @@ import java.util.List;
 public class EmployeeData {
 
     public void addEmployee(Employee employee) {
-        String query = "INSERT INTO employees(name, email, dept, salary) VALUES(?,?,?,?)";
+        String query = "INSERT INTO employees(name, email, department, salary) VALUES(?,?,?,?)";
 
         try (Connection connection = Database.connect();
                 PreparedStatement preparedStatement = connection.prepareStatement(query,  PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -30,7 +30,7 @@ public class EmployeeData {
     }
 
     public void addEmployees(List<Employee> employees) {
-        String query = "INSERT INTO employees(name, email, dept, salary) VALUES(?,?,?,?)";
+        String query = "INSERT INTO employees(name, email, department, salary) VALUES(?,?,?,?)";
 
         try (Connection connection = Database.connect();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -62,7 +62,7 @@ public class EmployeeData {
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getString("email"),
-                    Department.getCodeByDept(resultSet.getString("dept")),
+                    Department.getCodeByDept(resultSet.getString("department")),
                     resultSet.getDouble("salary")
                 );
             }
@@ -84,7 +84,7 @@ public class EmployeeData {
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getString("email"),
-                    Department.getCodeByDept(resultSet.getString("dept")),
+                    Department.getCodeByDept(resultSet.getString("department")),
                     resultSet.getDouble("salary")
                 ));
             }
@@ -96,9 +96,9 @@ public class EmployeeData {
     }
 
     public void updateEmployee(int id, String name, String email, int dept, double salary) {
-        String query = "SELECT  * FROM employees " +
-                        "SET name = ?, email = ?, dept = ?, salary = ?" +
-                        "WHERE id = ?";
+        String query = "UPDATE employees " +
+                        " SET name = ?, email = ?, department = ?, salary = ?" +
+                        " WHERE id = ?";
 
         try (Connection connection = Database.connect();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
